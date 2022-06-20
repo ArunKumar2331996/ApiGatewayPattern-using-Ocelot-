@@ -37,14 +37,17 @@ namespace Gateway
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
-            }
+            }                     
 
             app.UseHttpsRedirection();
 
             app.UseRouting();
 
-            app.UseAuthorization();
+            //app.UseAuthorization();
+
             await app.UseOcelot();
+            app.UseBasicAuth();
+            app.UseEMiddleware();
 
             app.UseEndpoints(endpoints =>
             {
